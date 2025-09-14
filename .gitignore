@@ -44,3 +44,4 @@ package-lock.json
 .env
 bun.lock
 bun.lockb
+/generated/prisma
