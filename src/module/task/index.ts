@@ -1,18 +1,16 @@
 import { Elysia } from 'elysia'
 import { AuthGuard } from '@/middleware/authGuard'
-
+import { AdminOnly } from '@/middleware/adminOnly'
 
 export const task = new Elysia()
     
     .use(AuthGuard)
+    .use(AdminOnly)
 
-    .get("/", async ({ user }) => {
-        const {role, username, token } = user
+    .get("/", async ({ decode }) => {
         return {
             msg: "task get",
-            role,
-            username,
-            token
+            decode,
         }
     }, {
         

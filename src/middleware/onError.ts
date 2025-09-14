@@ -32,6 +32,19 @@ export const onError = (app: Elysia) => app.onError(({ error, request, set, code
             } else {
                 set.status = 500;
             }
+            
+            const stack = error.stack ?? '';
+            const match = /at .*(src\/[^:]+):(\d+):\d+/.exec(stack);
+
+            // if (match) {
+            //     const [,file, line] = match;
+            //     data = {
+            //         message: error.message,
+            //         file,
+            //         line: Number(line),
+            //     };
+            //     break;
+            // }
             message = error.message;
             break;
         case 'INTERNAL_SERVER_ERROR':
