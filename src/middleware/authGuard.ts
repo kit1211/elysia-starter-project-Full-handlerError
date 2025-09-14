@@ -8,7 +8,6 @@ export const AuthGuard = (app: Elysia) => app
             token,
             username: "test",
             role: "ADMIN",
-            hhh:"vvv"
         }
         
         return {
